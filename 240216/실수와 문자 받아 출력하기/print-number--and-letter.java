@@ -7,8 +7,8 @@ public class Main {
         double a = sc.nextDouble();
         double b = sc.nextDouble();
 
-        System.out.println(s.charAt(0));
-        System.out.println((double)Math.round(a*100)/100);
-        System.out.println((double)Math.round(b*100)/100);
+        System.out.println(s);
+        System.out.printf("%.2f\n", (double)Math.round(a*100)/100);
+        System.out.printf("%.2f\n", (double)Math.round(b*100)/100);
     }
 }
