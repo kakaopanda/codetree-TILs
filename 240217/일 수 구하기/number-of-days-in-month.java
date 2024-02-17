@@ -6,7 +6,7 @@ public class Main {
         int n = sc.nextInt();
 
         Calendar cal = Calendar.getInstance();
-        cal.set(2024, n-1, 1);
+        cal.set(2023, n-1, 1);
         System.out.println(cal.getActualMaximum(Calendar.DATE));        
     }
 }
