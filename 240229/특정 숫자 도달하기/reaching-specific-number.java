@@ -20,6 +20,6 @@ public class Main {
                 break;
             }
         }
-        System.out.printf("%d %.1f", sum, (double)(sum/cnt));
+        System.out.printf("%d %.1f", sum, (double)Math.round((double)(sum*10/cnt))/10);
     }
 }
