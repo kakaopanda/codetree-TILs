@@ -16,7 +16,7 @@ public class Main {
             arrB[i] = sc.nextInt();
         }
 
-        for(int i=0; i<n1; i++){
+        for(int i=0; i<n1-n2; i++){
             if(arrB[0] == arrA[i]){
                 boolean check = true;
                 for(int j=1; j<n2; j++){
