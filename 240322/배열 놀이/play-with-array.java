@@ -32,9 +32,10 @@ public class Main {
                 case 3:
                     int start = sc.nextInt();
                     int end = sc.nextInt();
-                    for(int j=start-1; j<end; j++){
+                    for(int j=start-1; j<=end-1; j++){
                         System.out.print(arr[j] + " ");
                     }
+                    System.out.println();
                     break;
             }
         }
