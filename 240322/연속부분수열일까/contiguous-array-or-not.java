@@ -21,7 +21,7 @@ public class Main {
                 boolean check = true;
                 for(int j=1; j<n2; j++){
                     if(arrB[j] == arrA[i+j]){
-                        check = true;
+                        continue;
                     }
                     else{
                         check = false;
