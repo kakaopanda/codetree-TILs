@@ -18,7 +18,7 @@ public class Main {
 
         for(int i=0; i<n1; i++){
             if(arrB[0] == arrA[i]){
-                boolean check = true;
+                boolean check = false;
                 for(int j=1; j<n2; j++){
                     if(arrB[j] == arrA[i+j]){
                         check = true;
