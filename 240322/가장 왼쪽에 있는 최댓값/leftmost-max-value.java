@@ -5,7 +5,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
-        int max = Integer.MIN_VALUE;
 
         for(int i=0; i<n; i++){
             arr[i] = sc.nextInt();
@@ -13,6 +12,8 @@ public class Main {
 
         int nextIndex = n;
         while(true){
+            int max = Integer.MIN_VALUE;
+            
             if(nextIndex == 0){
                 break;
             }
