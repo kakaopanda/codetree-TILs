@@ -10,14 +10,11 @@ public class Main {
             arr[sc.nextInt()]++;
         }
 
-        int max = Integer.MIN_VALUE;
-        for(int i=0; i<arr.length; i++){
+        int max = -1;
+        for(int i=1; i<arr.length; i++){
             if(arr[i] == 1){
                 max = Math.max(max, i);
             }
-        }
-        if(max == Integer.MAX_VALUE){
-            max = -1;
         }
         System.out.println(max);
     }
