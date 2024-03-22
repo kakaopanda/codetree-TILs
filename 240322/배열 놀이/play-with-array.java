@@ -23,11 +23,11 @@ public class Main {
                     index = 0;
                     for(int j=0; j<arr.length; j++){
                         if(num == arr[j]){
-                            index = j;
+                            index = j+1;
                             break;
                         }
                     }
-                    System.out.println(index+1);
+                    System.out.println(index);
                     break;
                 case 3:
                     int start = sc.nextInt();
