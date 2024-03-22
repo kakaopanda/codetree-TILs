@@ -32,6 +32,6 @@ public class Main {
         }
         System.out.println();
 
-        System.out.println(totAvg/8);
+        System.out.println((double)Math.round(totAvg*10/8)/10);
     }
 }
