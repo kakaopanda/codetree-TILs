@@ -18,7 +18,7 @@ public class Main {
 
         for(int i=0; i<n1; i++){
             if(arrB[0] == arrA[i]){
-                boolean check = false;
+                boolean check = true;
                 for(int j=1; j<n2; j++){
                     if(arrB[j] == arrA[i+j]){
                         check = true;
@@ -30,11 +30,10 @@ public class Main {
                 }
                 if(check){
                     System.out.println("Yes");
-                }
-                else{
-                    System.out.println("No");
+                    return;
                 }
             }
         }
+        System.out.println("No");
     }
 }
