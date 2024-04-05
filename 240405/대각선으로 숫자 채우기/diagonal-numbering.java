@@ -7,20 +7,37 @@ public class Main {
         int m = sc.nextInt();
         int[][] arr = new int[n][m];
 
-        // 00 -> 01,10 -> 02,11,20
-        int num = 1; 
-        for(int j=0; j<m; j++){
-            int k = j;
-            for(int i=0; i<n && i<=j; i++, k--){
-                arr[i][k] = num++;
+        int num = 1;
+        if(n <= m){
+            for(int j=0; j<m; j++){
+                int k = j;
+                for(int i=0; i<n && i<=j; i++, k--){
+                    arr[i][k] = num++;
+                }
+            }
+
+            num = n*m;
+            for(int j=m-1; j>=0; j--){
+                int k = j;
+                for(int i=n-1; i>=0 && k<m; i--, k++){
+                    arr[i][k] = num--;
+                }
             }
         }
 
-        num = n*m;
-        for(int j=m-1; j>m/2; j--){
-            int k = j;
-            for(int i=n-1; i>=m; i--, k++){
-                arr[i][k] = num--;
+        else{
+            for(int j=0; j<m; j++){
+                int k = j;
+                for(int i=0; i<n && i<=j; i++, k--){
+                    arr[i][k] = num++;
+                }
+            }
+
+            for(int i=1; i<n; i++){
+                int k = i;
+                for(int j=m-1; j>=0 && k<n; j--, k++){
+                    arr[k][j] = num++;
+                }
             }
         }
 
