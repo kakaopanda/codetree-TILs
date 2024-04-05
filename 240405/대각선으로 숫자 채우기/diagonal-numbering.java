@@ -11,15 +11,15 @@ public class Main {
         int num = 1; 
         for(int j=0; j<m; j++){
             int k = j;
-            for(int i=0; i<=j; i++, k--){
+            for(int i=0; i<n && i<=j; i++, k--){
                 arr[i][k] = num++;
             }
         }
 
         num = n*m;
-        for(int j=m-1; j>=m/2; j--){
+        for(int j=m-1; j>m/2; j--){
             int k = j;
-            for(int i=n-1; i>=j; i--, k++){
+            for(int i=n-1; i>=m; i--, k++){
                 arr[i][k] = num--;
             }
         }
