@@ -7,9 +7,10 @@ public class Main {
         String target = sc.next();
         int index = -1;
 
-        for(int i=0; i<s.length()-target.length(); i++){
+        for(int i=0; i<=s.length()-target.length(); i++){
             if(s.substring(i,i+target.length()).equals(target)){
                 index = i;
+                break;
             }
         }
 
