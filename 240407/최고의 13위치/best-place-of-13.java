@@ -14,10 +14,10 @@ public class Main {
 
         int max = Integer.MIN_VALUE;
         for(int i=0; i<n; i++){
-            for(int r=0; r<=n-3; r++){
+            for(int j=0; j<=n-3; j++){
                 int sum = 0;
-                for(int c=r; c<=r+2; c++){
-                    sum += arr[r][c];
+                for(int k=j; k<=j+2; k++){
+                    sum += arr[i][k];
                 }
                 max = Math.max(max, sum);
             }
