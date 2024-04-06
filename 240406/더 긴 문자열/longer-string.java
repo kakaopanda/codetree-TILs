@@ -7,6 +7,14 @@ public class Main {
         String s2 = sc.next();
         int max = Math.max(s1.length(), s2.length());
 
-        System.out.println((max == s1.length()) ? s1 : s2 + " " + max);
+        if(s1.length() == s2.length()){
+            System.out.println("same");
+        }
+        else if(max == s1.length()){
+            System.out.println(s1 + " " + max);
+        }
+        else{
+            System.out.println(s2 + " " + max);
+        }
     }
 }
