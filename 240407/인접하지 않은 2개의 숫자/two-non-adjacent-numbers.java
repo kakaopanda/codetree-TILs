@@ -12,7 +12,7 @@ public class Main {
         }
 
         // 첫 번째 숫자 선택
-        for(int i=0; i<n-3; i++){
+        for(int i=0; i<=n-3; i++){
             int temp = Integer.MIN_VALUE;
 
             // 두 번째 숫자 선택
