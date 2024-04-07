@@ -26,7 +26,7 @@ public class Main {
 
         for(int i=0; i<openIndex.size(); i++){
             for(int j=0; j<closeIndex.size(); j++){
-                if(openIndex.get(i) < closeIndex.get(i)){
+                if(openIndex.get(i) < closeIndex.get(j)){
                     answer += 1;                    
                 }
             }
