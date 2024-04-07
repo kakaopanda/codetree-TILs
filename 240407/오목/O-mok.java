@@ -17,8 +17,8 @@ public class Main {
         }
 
         STOP:
-        for(int i=0; i<19-4; i++){
-            for(int j=0; j<19-4; j++){
+        for(int i=0; i<19; i++){
+            for(int j=0; j<19; j++){
                 if(arr[i][j] != 0){
                     int v = arr[i][j];
 
