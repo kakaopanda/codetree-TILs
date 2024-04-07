@@ -40,10 +40,19 @@ public class Main {
                         break STOP;
                     }
 
-                    // 3. 대각선으로 연속되는지 확인
+                    // 3. 우측하단 대각선으로 연속되는지 확인
                     if(i-4>=0 && j-4>=0 && arr[i-1][j-1]==v && arr[i-2][j-2]==v &&
                     arr[i-3][j-3]==v && arr[i-4][j-4]==v){
                         R = i-2+1;
+                        C = j-2+1;
+                        answer = v;
+                        break STOP;
+                    }
+
+                    // 4. 좌측하단 대각선으로 연속되는지 확인
+                    if(i+4<19 && j-4>=0 && arr[i+1][j-1]==v && arr[i+2][j-2]==v &&
+                    arr[i+3][j-3]==v && arr[i+4][j-4]==v){
+                        R = i+2+1;
                         C = j-2+1;
                         answer = v;
                         break STOP;
