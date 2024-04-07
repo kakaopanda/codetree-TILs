@@ -65,6 +65,8 @@ public class Main {
         System.out.println(answer);
 
         // 가운데 위치한 바둑알의 가로줄 및 세로줄 번호 출력(세로,가로,대각선)
-        System.out.println(R + " " + C);
+        if(answer != 0){
+            System.out.println(R + " " + C);
+        }
     }
 }
