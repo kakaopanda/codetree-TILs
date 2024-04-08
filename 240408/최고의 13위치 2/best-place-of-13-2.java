@@ -21,9 +21,14 @@ public class Main {
 
                 // 2. 두번째 격자 선정
                 // (1). 동일한 행 내에서 2개의 격자를 선정하는 경우
-                //if(){
+                if(j+5 < arr.length){
+                    for(int k=j+3; k<arr.length; k++){
+                        int secondSum = 0;
+                        secondSum = arr[i][k] + arr[i][k+1] + arr[i][k+2];
 
-                //}
+                        max = Math.max(max, firstSum + secondSum);
+                    }
+                }
                 
                 // (2). 서로 다른 행에서 2개의 격자를 선정하는 경우
                 for(int n=i+1; n<arr.length; n++){
