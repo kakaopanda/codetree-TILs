@@ -22,7 +22,7 @@ public class Main {
                 // 2. 두번째 격자 선정
                 // (1). 동일한 행 내에서 2개의 격자를 선정하는 경우
                 if(j+5 < arr.length){
-                    for(int k=j+3; k<arr.length; k++){
+                    for(int k=j+3; k<arr.length-2; k++){
                         int secondSum = 0;
                         secondSum = arr[i][k] + arr[i][k+1] + arr[i][k+2];
 
