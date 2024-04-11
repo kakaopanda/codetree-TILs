@@ -1,16 +1,22 @@
 import java.io.*;
 import java.util.*;
 
+// 중요! 산타를 담는 리스트로 ArrayList를 쓰면 안되는 이유 -> 인덱스 순으로 산타를 찾도록 HashMap을 이용해야한다.
+// 산타의 이동은 1번부터 P번까지 이뤄져야한다. 하지만 입력값으로 리스트에 담을때 뒷번호에 해당하는 산타가
+// 앞번호에 해당하는 산타보다 먼저 담길 수 있다. 그렇게 되면 2번이 1번보다 먼저 움직여 문제에서 요구하는 로직이 꼬이게 되고, 오답처리된다.
+// HashMap은 ArrayList처럼 변경된 객체에 대한 동기화가 지원되지 않기 때문에, Santa 객체에 변동사항이 생기면 put() 메소드를 호출해 다시 업데이트 해줘야한다.
+
 public class Main {
 	// 게임판의 크기(N), 게임턴수(M), 산타의수(P), 루돌프의힘(C), 산타의힘(D)
 	static int N, M, P, C, D;
 	static Rudolph rudolph;
-	static ArrayList<Santa> santas;
+	static HashMap<Integer, Santa> santas;
 	
 	// 방향벡터 : 상[0], 우[1], 하[2], 좌[3], 좌상[4], 우상[5], 우하[6], 좌하[7]
 	static int[][] delta = {{-1,0},{0,1},{1,0},{0,-1},{-1,-1},{-1,1},{1,1},{1,-1}};
 	
 	public static void main(String[] args) throws IOException{
+		// System.setIn(new FileInputStream("src/Solution/input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
@@ -26,15 +32,14 @@ public class Main {
 		rudolph = new Rudolph(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
 		
 		// 3. 산타 초기 위치 초기화
-		santas = new ArrayList<>();
-		santas.add(new Santa(0,0,0));
+		santas = new HashMap<>();
 		for(int i=0; i<P; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int n = Integer.parseInt(st.nextToken());
 			int r = Integer.parseInt(st.nextToken());
 			int c = Integer.parseInt(st.nextToken());
 			
-			santas.add(new Santa(n, r, c));
+			santas.put(n, new Santa(n, r, c));
 		}
 		
 		// 4. 게임 턴 수만큼 진행
@@ -144,6 +149,8 @@ public class Main {
 				collision(s, d);
 			}
 		}
+		
+		santas.put(s.n, s);
 	}
 	
 	// 매개변수 : 이동하는 산타 객체
@@ -224,20 +231,18 @@ public class Main {
 				collision(s, (d+2)%4);
 			}
 		}
+		santas.put(s.n, s);
 	}
 	
 	// 매개변수 : 충돌로 날아가는 산타 객체, 산타가 날아온 방향
 	// 루돌프와의 충돌로 날아가는 산타 객체가 추가적인 충돌을 발생시킬 수 있는지에 대해 판단한다.
 	static void collision(Santa s, int d) {
 		for(int i=1; i<=P; i++) {
-			// 날아온 산타와 비교 대상인 산타가 같은 경우는 비교하지 않는다.
-			// 비교 대상인 산타가 탈락한 경우도 비교하지 않는다.
-			if(i==s.n || s.isDead) {
-				continue;
-			}
-			else {
-				Santa t = santas.get(i);
+		// 날아온 산타와 비교 대상인 산타가 같은 경우는 비교하지 않는다.
+		// 비교 대상인 산타가 탈락한 경우도 비교하지 않는다.
+			Santa t = santas.get(i);
 				
+			if(s.n != t.n && !t.isDead && s.r==t.r && s.c==t.c) {
 				// 날아온 산타와 비교 대상인 산타가 또 충돌할 경우, 새롭게 충돌한 산타의 위치를 변경한다.
 				if(s.r==t.r && s.c==t.c) {
 					t.r += delta[d][0];
@@ -246,16 +251,17 @@ public class Main {
 					// 새롭게 충돌한 산타의 탈락 여부를 판단한다.
 					if(isOut(t)) {
 						t.isDead = true;
+						santas.put(t.n, t);
 					}
 					else {
 						// 날아온 산타를 갱신하고, 다시 처음부터 반복을 수행한다.
 						s = t;
-						i = 1;
+						i = 0;
 					}
 				}
-			}
+			}						
 		}
-	}
+	}	
 	
 	// 매개변수 : 루돌프와의 거리를 계산할 산타 객체
 	static int getDistance(Santa s) {
