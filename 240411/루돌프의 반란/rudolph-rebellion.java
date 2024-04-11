@@ -238,28 +238,32 @@ public class Main {
 	// 루돌프와의 충돌로 날아가는 산타 객체가 추가적인 충돌을 발생시킬 수 있는지에 대해 판단한다.
 	static void collision(Santa s, int d) {
 		for(int i=1; i<=P; i++) {
-		// 날아온 산타와 비교 대상인 산타가 같은 경우는 비교하지 않는다.
-		// 비교 대상인 산타가 탈락한 경우도 비교하지 않는다.
-			Santa t = santas.get(i);
-				
-			if(s.n != t.n && !t.isDead && s.r==t.r && s.c==t.c) {
+			// 날아온 산타와 비교 대상인 산타가 같은 경우는 비교하지 않는다.
+			// 비교 대상인 산타가 탈락한 경우도 비교하지 않는다.
+			if(i==s.n || s.isDead) {
+				continue;
+			}
+			else {
+				Santa t = santas.get(i);
+					
 				// 날아온 산타와 비교 대상인 산타가 또 충돌할 경우, 새롭게 충돌한 산타의 위치를 변경한다.
 				if(s.r==t.r && s.c==t.c) {
 					t.r += delta[d][0];
 					t.c += delta[d][1];
-					
+						
 					// 새롭게 충돌한 산타의 탈락 여부를 판단한다.
 					if(isOut(t)) {
 						t.isDead = true;
 						santas.put(t.n, t);
 					}
+					
 					else {
 						// 날아온 산타를 갱신하고, 다시 처음부터 반복을 수행한다.
 						s = t;
 						i = 0;
 					}
 				}
-			}						
+			}
 		}
 	}	
 	
