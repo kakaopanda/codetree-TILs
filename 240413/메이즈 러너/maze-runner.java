@@ -52,13 +52,13 @@ public class Main {
 			// 5. 참가자 이동
 			moveMan();
 			
-			// 6. 회전시킬 정사각형 영역 탐색
-			decideSquare();
-			
 			// 게임 시간이 종료되기 전, 모든 참가자가 탈출한 경우 게임을 종료한다.
 			if(manList.size() == 0) {
 				break;
-			}			
+			}
+			
+			// 6. 회전시킬 정사각형 영역 탐색
+			decideSquare();
 		}
 		
 		// 게임 시간이 종료되기 전까지 탈출하지 못한 참가자들의 이동 거리도 더해준다.
@@ -75,11 +75,11 @@ public class Main {
 	// 조건에 부합하는 참가자를 이동시킨다.
 	static void moveMan() {
 		// 현재 리스트에서 꺼낸 참가자는 모두 탈출하지 못한 참가자이다.
-		for(int i=0; i<manList.size(); i++) {
+		for(int i=manList.size()-1; i>=0; i--) {
 			Man m = manList.get(i);
 			
 			// 참가자의 이동 전 현 위치에서 탈출구와의 거리를 계산한다.
-			int currentDistance = getDistance(m.r, m.c, R, C);
+			int currentDistance = getDistance(m.r, m.c);
 			int minDistance = Integer.MAX_VALUE;
 			int directionIndex = -1;
 			
@@ -89,8 +89,8 @@ public class Main {
 				int nc = m.c + delta[d][1];
 				
 				// 이동 후 위치가 미로를 안벗어나는지, 빈칸으로 이동할 수 있는지 확인한다.
-				if(nr>0 && nr<=N && nc>0 && nc<=N && map[nr][nc]<=0) {
-					int nextDistance = getDistance(nr, nc, R, C);
+				if(nr>=1 && nr<=N && nc>=1 && nc<=N && map[nr][nc]<=0) {
+					int nextDistance = getDistance(nr, nc);
 					
 					if(nextDistance<minDistance && nextDistance<currentDistance) {
 						minDistance = nextDistance;
@@ -104,13 +104,12 @@ public class Main {
 				m.r += delta[directionIndex][0];
 				m.c += delta[directionIndex][1];
 				m.m += 1;
-			}
-			
-			// 참가자가 탈출구에 도달한 경우, 이동 횟수를 정답에 더해주고 리스트에서 제거한다.
-			if(m.r==R && m.c==C) {
-				answer += m.m;
-				manList.remove(m);
-				i -= 1;
+				
+				// 참가자가 탈출구에 도달한 경우, 이동 횟수를 정답에 더해주고 리스트에서 제거한다.
+				if(m.r==R && m.c==C) {
+					answer += m.m;
+					manList.remove(m);
+				}
 			}
 		}
 	}
@@ -128,7 +127,7 @@ public class Main {
 			
 			// 참가자의 위치와 탈출구의 위치차 중, 더 큰쪽을 가져온다.
 			// 더 큰쪽을 가져와야 정사각형 안에 참가자와 탈출구를 모두 포함시킬 수 있다.
-			int currentDiff = Math.max(Math.abs(m.r-R), Math.abs(m.c-C));
+			int currentDiff = Math.max(Math.abs(R-m.r), Math.abs(C-m.c));
 			
 			if(currentDiff < minDiff) {
 				minDiff = currentDiff;
@@ -143,13 +142,13 @@ public class Main {
 		int D = minDiff;
 
 		Loop:
-		for(int i=1; i<N-D; i++) {
-			for(int j=1; j<N-D; j++) {
+		for(int i=1; i<=N-D; i++) {
+			for(int j=1; j<=N-D; j++) {
 				for(int k=0; k<minDiffList.size(); k++) {
 					Man m = minDiffList.get(k);
 
 					// 정사각형 영역안에 참가자와 탈출구가 모두 포함되는 경우
-					if(m.r<=i+D && m.c<=j+D && R<=i+D && C<=i+D) {
+					if(m.r<=i+D && m.c<=j+D && R<=i+D && C<=j+D) {
 						// 해당 위치를 정사각형의 시작 위치로 지정한다.
 						// 탐색을 좌상단부터 시작하므로, 조건을 만족하는 정사각형을 찾으면 바로 종료한다.(탐색 우선순위 반영)
 						squareR = i;
@@ -161,59 +160,51 @@ public class Main {
 		}
 		
 		// minDiff+1은 회전시킬 정사각형 영역의 크기로 사용한다.
-		rotateMap(squareR, squareC, minDiff+1, minDiffList);
+		rotateMap(squareR, squareC, minDiff+1);
 	}
 	
 	// 정사각형 영역을 시계 방향으로 90도 회전시킨다.
-	static void rotateMap(int sr, int sc, int n, ArrayList<Man> list) {
+	static void rotateMap(int r, int c, int n) {
 		int[][] square = new int[n][n];
 		boolean exitChange = false;
-		boolean[] manChange = new boolean[list.size()];
+		boolean[] manChange = new boolean[manList.size()];
+		
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				square[i][j] = map[i+r][j+c];
+			}
+		}
 		
 		// 정사각형 영역을 시계방향으로 90도 돌린 뒤, 벽의 내구도를 감소시킨다.
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
-				square[i][j] = map[sr+n-j-1][sc+i];
-				
 				// 현재 위치가 탈출구인 경우, 1번만 돌려준다.
-				if(!exitChange && i+sr==R && j+sc==C) {
-					R = sr+j;
-					C = sc+n-i-1;
+				if(i+r==R && j+c==C && !exitChange) {
+					R = r+j;
+					C = c+n-i-1;
 					exitChange = true;
 				}
 				
 				// 현재 위치가 참가자인 경우, 1번만 돌려준다.
-				for(int k=0; k<list.size(); k++) {
+				for(int k=0; k<manList.size(); k++) {
 					// 아직 돌리지 않은 참가자만 확인한다.
-					if(!manChange[k]) {
-						Man m = list.get(k);
-						
-						if(i+sr==m.r && j+sc==m.c) {
-							m.r = sr+j;
-							m.c = sc+n-i-1;
-							manChange[k] = true;
-						}
+					Man m = manList.get(k);
+					
+					if(i+r==m.r && j+c==m.c && !manChange[k]) {
+						m.r = r+j;
+						m.c = c+n-i-1;
+						manChange[k] = true;
 					}
 				}
-				
-				// 벽의 내구도가 1이상인 경우, 1 감소시킨다.
-				if(square[i][j] > 0) {
-					square[i][j] -= 1;
-				}
-			}
-		}
-		
-		// 90도 돌린 정사각형 영역을 미로에 반영한다.
-		for(int i=sr; i<sr+n; i++) {
-			for(int j=sc; j<sc+n; j++) {
-				map[i][j] = square[i-sr][j-sc];
+
+				map[r+j][c+n-i-1] = square[i][j] - 1;
 			}
 		}
 	}
 	
 	// 두 좌표(참가자와 탈출구)간 최소 거리를 계산한다.
-	static int getDistance(int x1, int y1, int x2, int y2) {
-		return Math.abs(x1-x2) + Math.abs(y1-y2);
+	static int getDistance(int r, int c) {
+		return Math.abs(R-r) + Math.abs(C-c);
 	}
 	
 	static void print() {
