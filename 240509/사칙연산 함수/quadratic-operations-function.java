@@ -20,6 +20,8 @@ public class Main {
             case "*":
                 multiple(a, c);
                 break;
+            default:
+                System.out.println("False");
         }
     }
 
