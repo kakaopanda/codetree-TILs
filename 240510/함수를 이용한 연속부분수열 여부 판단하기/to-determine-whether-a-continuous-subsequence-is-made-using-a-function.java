@@ -26,22 +26,18 @@ public class Main {
     }
 
     public static boolean isSubArray(int[] A, int[] B){
-        for(int i=0; i<A.length; i++){
+        for(int i=0; i<=A.length-B.length; i++){
             if(A[i] == B[0]){
-                for(int j=0; j<B.length; j++){
+                for(int j=1; j<B.length; j++){
                     if(B[j] == A[i+j]){
                         if(j == B.length-1){
                             return true;
                         }
-                        continue;
-                    }
-                    else{
-                        return false;
                     }
                 }
             }
         }
-        
+
         return false;
     }
 }
