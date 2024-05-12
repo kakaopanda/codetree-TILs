@@ -5,22 +5,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        print(n, 1, n);
+        print(n);
     }
 
-    public static void print(int start, int end, int standard){
-        if(start == 0){
-            if(end == standard+1){
-                return;
-            }
-            else{
-                System.out.print(end + " ");
-                print(start, end+1, standard);
-            }
+    public static void print(int n){
+        if(n == 0){
+            return;
         }
-        else{
-            System.out.print(start + " ");
-            print(start-1, end, standard);
-        }
+
+        System.out.print(n + " ");
+        print(n-1);
+        System.out.print(n + " ");
     }
 }
