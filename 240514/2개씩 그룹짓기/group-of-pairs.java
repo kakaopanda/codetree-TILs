@@ -11,6 +11,11 @@ public class Main {
         }
         Arrays.sort(arr);
 
-        System.out.println(arr[n-1] + arr[arr.length-n]);
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<arr.length/2; i++){
+            int sum = arr[i] + arr[arr.length-i-1];
+            max = Math.max(max, sum);
+        }
+        System.out.println(max);
     }
 }
