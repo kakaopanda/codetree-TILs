@@ -12,13 +12,18 @@ public class Main {
         Arrays.sort(a2);
 
         boolean equal = true;
-        for(int i=0; i<a1.length; i++){
-            if(a1[i] != a2[i]){
-                equal = false;
-                break;
+        if(a1.length == a2.length){
+            for(int i=0; i<a1.length; i++){
+                if(a1[i] != a2[i]){
+                    equal = false;
+                    break;
+                }
             }
         }
-
+        else{
+            equal = false;
+        }
+        
         if(equal){
             System.out.println("Yes");
         }
