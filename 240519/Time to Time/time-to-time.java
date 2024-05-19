@@ -10,7 +10,7 @@ public class Main {
         int d = sc.nextInt();
 
         int time = 0;
-        if(c>a && d>=b){
+        if(c>=a && d>=b){
             time += d - b;
             time += (c-a) * 60;
         }
