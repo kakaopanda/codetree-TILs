@@ -33,8 +33,8 @@ public class Main {
             dayDiff += (d2 - d1);
         }
 
-        for(int i=m1+1; i<m2; i++){
-            dayDiff += days[i];
+        for(int i=1; i<=monDiff; i++){
+            dayDiff += days[m1 + i];
         }
         int index = map.get(w);
 
