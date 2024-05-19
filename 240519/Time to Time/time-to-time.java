@@ -14,7 +14,7 @@ public class Main {
             time += d - b;
             time += (c-a) * 60;
         }
-        else if(c>a && d<b){
+        else if(c>=a && d<b){
             time += 60 - b + d;
             time += (c-a-1) * 60;
         }
