@@ -36,7 +36,12 @@ public class Main {
             dayDiff += days[m1 + i];
         }
         int index = map.get(w);
-        cnt = (dayDiff - index) / 7 + 1;
+
+        // 탐색하려는 요일이 최소 1번이상 등장하는 경우
+        do{
+            cnt += 1;
+            dayDiff -= 7;
+        }while(dayDiff > index);
 
         System.out.println(cnt);
     }
