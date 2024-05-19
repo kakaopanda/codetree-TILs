@@ -16,7 +16,7 @@ public class Main {
         // (m1, d1)을 기준으로, (m2, d2)가 기준보다 앞 날짜에 해당하는지, 뒷 날짜에 해당하는지 결정한다.
         int dayDiff = 0;
         if(m1 > m2){
-            dayDiff += (days[m2-1] - d2);
+            dayDiff += (days[m2-1] - d2) - 1;
             for(int i=m2+1; i<m1; i++){
                 dayDiff += days[i-1];
             }
