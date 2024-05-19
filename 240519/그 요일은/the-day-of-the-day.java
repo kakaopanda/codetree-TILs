@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     static String[] week = {"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
     static int[] days = {0, 31, 29, 31, 30, 31, 30,
-                       30, 31, 30, 31, 30, 31};
+                       31, 31, 30, 31, 30, 31};
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
