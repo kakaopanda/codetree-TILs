@@ -41,7 +41,7 @@ public class Main {
         do{
             cnt += 1;
             dayDiff -= 7;
-        }while(dayDiff > index);
+        }while(dayDiff >= index);
 
         System.out.println(cnt);
     }
