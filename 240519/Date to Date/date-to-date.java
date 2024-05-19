@@ -12,7 +12,7 @@ public class Main {
         int diff = 0;
 
         if(m1 == m2){
-            diff = d2 - d1;
+            diff = d2 - d1 + 1;
         }
         else if(m1 < m2){
             diff += days[m1] - d1 + 1;
