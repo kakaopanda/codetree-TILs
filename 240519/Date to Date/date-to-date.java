@@ -9,13 +9,13 @@ public class Main {
         int d2 = sc.nextInt();
 
         int[] days = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        int diff = 1;
+        int diff = 0;
 
         if(m1 == m2){
             diff = d2 - d1;
         }
         else if(m1 < m2){
-            diff += days[m1] - d1;
+            diff += days[m1] - d1 + 1;
             for(int i=m1+1; i<m2; i++){
                 diff += days[i];
             }
