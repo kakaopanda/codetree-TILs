@@ -9,7 +9,7 @@ public class Main {
         for(int i=0; i<n; i++){
             int start = sc.nextInt();
             int end = sc.nextInt();
-            for(int j=start; j<end; j++){
+            for(int j=start+100; j<end+100; j++){
                 arr[j] += 1;
             }
         }
