@@ -7,7 +7,10 @@ public class Main {
 
         // 원점에서 시작하여, 영역은 왼쪽, 오른쪽으로 최대 1,000번 움직일 수 있으므로
         // 영역의 크기는 [-1000, 1000]을 충족해야한다.
-        int[] arr = new int[2001];
+        // arr[0] ~ arr[999] : [-1000, -1]
+        // arr[1000] : [0]
+        // arr[1001] ~ arr[1999] : [1, 1000]
+        int[] arr = new int[2000];
         int position = 1000; 
 
         for(int i=0; i<n; i++){
@@ -31,7 +34,7 @@ public class Main {
                         break;
                     }
                     else{
-                        arr[position--]++;
+                        arr[--position]++;
                         move--;
                     }
                 }
