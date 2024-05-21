@@ -27,7 +27,7 @@ public class Main {
             }
             else if(direction.equals("L")){
                 while(true){
-                    if(move < 0){
+                    if(move <= 0){
                         break;
                     }
                     else{
