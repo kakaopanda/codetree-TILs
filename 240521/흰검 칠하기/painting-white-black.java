@@ -9,7 +9,7 @@ public class Main {
             arr[i] = new Color();
         }
 
-        int pos = 1000;
+        int pos = 100000;
         for(int i=0; i<n; i++){
             int move = sc.nextInt();
             String direction = sc.next();
