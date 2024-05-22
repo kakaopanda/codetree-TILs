@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[][] map = new int[2001][2001];
+        int[][] map = new int[2000][2000];
 
         for(int i=1; i<=3; i++){
             int x1 = sc.nextInt() + 1000;
