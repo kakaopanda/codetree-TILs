@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[][] map = new int[2001][2001];
+        int[][] map = new int[2000][2000];
 
         int x1 = sc.nextInt() + 1000;
         int y1 = sc.nextInt() + 1000;
@@ -15,8 +15,8 @@ public class Main {
         int x4 = sc.nextInt() + 1000;
         int y4 = sc.nextInt() + 1000;
 
-        for(int x=x1; x<=x2; x++){
-            for(int y=y1; y<=y2; y++){
+        for(int x=x1; x<x2; x++){
+            for(int y=y1; y<y2; y++){
                 map[x][y] += 1;
             }
         }
@@ -43,6 +43,6 @@ public class Main {
             }
         }
 
-        System.out.println((maxX-minX) * (maxY-minY));
+        System.out.println((maxX-minX+1) * (maxY-minY+1));
     }
 }
