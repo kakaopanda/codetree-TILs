@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] map = new int[201][201];
+        int[][] map = new int[200][200];
 
         for(int i=0; i<n; i++){
             int x1 = sc.nextInt() + 100;
