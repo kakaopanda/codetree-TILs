@@ -21,8 +21,8 @@ public class Main {
             }
         }
 
-        for(int x=x3; x<=x4; x++){
-            for(int y=y3; y<=y4; y++){
+        for(int x=x3; x<x4; x++){
+            for(int y=y3; y<y4; y++){
                 map[x][y] += 2;
             }
         }
@@ -43,12 +43,6 @@ public class Main {
             }
         }
 
-        if(maxX==Integer.MIN_VALUE || maxY==Integer.MIN_VALUE ||
-        minX==Integer.MAX_VALUE || minY==Integer.MAX_VALUE){
-            System.out.println(0);
-        }
-        else{
-            System.out.println((maxX-minX) * (maxY-minY));
-        }
+        System.out.println((maxX-minX) * (maxY-minY));
     }
 }
