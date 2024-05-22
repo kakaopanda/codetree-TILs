@@ -43,6 +43,12 @@ public class Main {
             }
         }
 
-        System.out.println((maxX-minX) * (maxY-minY));
+        if(maxX==Integer.MIN_VALUE || maxY==Integer.MIN_VALUE ||
+        minX==Integer.MAX_VALUE || minY==Integer.MAX_VALUE){
+            System.out.println(0);
+        }
+        else{
+            System.out.println((maxX-minX) * (maxY-minY));
+        }
     }
 }
