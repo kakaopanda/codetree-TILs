@@ -6,10 +6,10 @@ public class Main {
         int[][] map = new int[2001][2001];
 
         for(int i=1; i<=3; i++){
-            int x1 = sc.nextInt();
-            int y1 = sc.nextInt();
-            int x2 = sc.nextInt();
-            int y2 = sc.nextInt();
+            int x1 = sc.nextInt() + 1000;
+            int y1 = sc.nextInt() + 1000;
+            int x2 = sc.nextInt() + 1000;
+            int y2 = sc.nextInt() + 1000;
 
             for(int x=x1; x<x2; x++){
                 for(int y=y1; y<y2; y++){
