@@ -43,6 +43,13 @@ public class Main {
             }
         }
 
-        System.out.println((maxX-minX+1) * (maxY-minY+1));
+        // 첫 번째 직사각형이 두 번째 직사각형 내부에 완전히 포함되어 좌표가 갱신되지 않는 경우
+        if(maxX==Integer.MIN_VALUE || maxY==Integer.MIN_VALUE ||
+        minX==Integer.MAX_VALUE || minY==Integer.MAX_VALUE){
+            System.out.println(0);
+        }
+        else{
+            System.out.println((maxX-minX+1) * (maxY-minY+1));
+        }
     }
 }
