@@ -11,7 +11,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int max = 1;
+        int max = 0;
         int cnt = 0;
         for(int i=1; i<n; i++){
             if(arr[i] > t){
