@@ -11,7 +11,7 @@ public class Main {
         }
 
         int max = 1;
-        int cnt = 0;
+        int cnt = 1;
 
         for(int i=1; i<arr.length; i++){
             if(arr[i-1]>0 && arr[i]>0){
