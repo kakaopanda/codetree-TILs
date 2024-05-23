@@ -26,10 +26,19 @@ public class Main {
         }
 
         for(int i=0; i<arr.length; i++){
-            if(person[arr[i].x].infection == 1){
-                if(person[arr[i].x].k > 0){
-                    person[arr[i].x].k -= 1;
-                    person[arr[i].y].infection = 1;
+            int x = arr[i].x;
+            int y = arr[i].y;
+
+            if(person[x].infection == 1){
+                if(person[x].k > 0){
+                    person[x].k -= 1;
+                    person[y].infection = 1;
+                }
+            }
+            else if(person[y].infection == 1){
+                if(person[y].k > 0){
+                    person[y].k -= 1;
+                    person[x].infection = 1;
                 }
             }
         }
