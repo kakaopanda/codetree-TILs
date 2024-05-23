@@ -12,7 +12,7 @@ public class Main {
         }
 
         int max = 0;
-        int cnt = 0;
+        int cnt = (arr[0] > t) ? 1 : 0;
         for(int i=1; i<n; i++){
             if(arr[i] > t){
                 if(arr[i] > arr[i-1]){
