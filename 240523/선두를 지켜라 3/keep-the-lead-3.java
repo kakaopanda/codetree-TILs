@@ -42,6 +42,10 @@ public class Main {
                     rank = "B";
                     cnt += 1;
                 }
+                else if(A[i] == B[i]){
+                    rank = "A B";
+                    cnt += 1;
+                }
             }
             else if(rank.equals("A B")){
                 if(A[i] > B[i]){
@@ -74,7 +78,7 @@ public class Main {
                 }
             }
         }
-        
+
         System.out.println(cnt);
     }
 }
