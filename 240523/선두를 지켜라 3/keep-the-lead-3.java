@@ -31,9 +31,9 @@ public class Main {
         }
 
         int cnt = 0;
-        String rank = "";
+        String rank = "Empty";
         for(int i=1; i<=time; i++){
-            if(rank.equals("")){
+            if(rank.equals("Empty")){
                 if(A[i] > B[i]){
                     rank = "A";
                     cnt += 1;
