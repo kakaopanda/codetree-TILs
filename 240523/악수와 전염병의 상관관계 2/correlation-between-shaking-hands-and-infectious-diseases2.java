@@ -29,7 +29,15 @@ public class Main {
             int x = arr[i].x;
             int y = arr[i].y;
 
-            if(person[x].infection == 1){
+            if(person[x].infection==1 && person[y].infection==1){
+                if(person[x].k > 0){
+                    person[x].k -= 1;
+                }
+                if(person[y].k > 0){
+                    person[y].k -= 1;
+                }
+            }
+            else if(person[x].infection == 1){
                 if(person[x].k > 0){
                     person[x].k -= 1;
                     person[y].infection = 1;
