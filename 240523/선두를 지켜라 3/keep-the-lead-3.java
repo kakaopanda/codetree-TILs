@@ -9,14 +9,17 @@ public class Main {
         int[] B = new int[1000001];
 
         int time = 0;
+        int indexA = 1;
+        int indexB = 1;
         for(int i=1; i<=n; i++){
             int v = sc.nextInt();
             int t = sc.nextInt();
             time += t;
 
             while(t > 0){
-                A[i] = A[i-1] + v;
+                A[indexA] = A[indexA-1] + v;
                 t -= 1;
+                indexA += 1;
             }
         }
 
@@ -25,8 +28,9 @@ public class Main {
             int t = sc.nextInt();
 
             while(t > 0){
-                B[i] = B[i-1] + v;
+                B[indexB] = B[indexB-1] + v;
                 t -= 1;
+                indexB += 1;
             }
         }
 
