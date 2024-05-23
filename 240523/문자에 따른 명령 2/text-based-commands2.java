@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int dir = 3; // 동(0), 남(1), 서(2), 북(3) (x, y) 좌표계로 가정
-        int[][] delta = {{1,0},{0,1},{-1,0},{0,-1}};
+        int[][] delta = {{1,0},{0,-1},{-1,0},{0,1}};
         String s = sc.next();
 
         char[] command = s.toCharArray();
