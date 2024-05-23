@@ -15,12 +15,7 @@ public class Main {
         int cnt = (arr[0] > t) ? 1 : 0;
         for(int i=1; i<n; i++){
             if(arr[i] > t){
-                if(arr[i] > arr[i-1]){
-                    cnt += 1;
-                }
-                else{
-                    cnt = 1;
-                }
+                cnt += 1;
             }
             else{
                 cnt = 0;
