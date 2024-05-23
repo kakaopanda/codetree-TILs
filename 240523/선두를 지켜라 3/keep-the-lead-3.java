@@ -43,11 +43,11 @@ public class Main {
                     cnt += 1;
                 }
                 else if(A[i] == B[i]){
-                    rank = "A B";
+                    rank = "AB";
                     cnt += 1;
                 }
             }
-            else if(rank.equals("A B")){
+            else if(rank.equals("AB")){
                 if(A[i] > B[i]){
                     rank = "A";
                     cnt += 1;
@@ -63,7 +63,7 @@ public class Main {
                     cnt += 1;
                 }
                 else if(A[i] == B[i]){
-                    rank = "A B";
+                    rank = "AB";
                     cnt += 1;
                 }
             }
@@ -73,7 +73,7 @@ public class Main {
                     cnt += 1;
                 }
                 else if(A[i] == B[i]){
-                    rank = "A B";
+                    rank = "AB";
                     cnt += 1;
                 }
             }
