@@ -10,14 +10,11 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int max = Integer.MIN_VALUE;
+        int max = 1;
         int cnt = 0;
 
-        for(int i=0; i<arr.length; i++){
-            if(i == 0){
-                cnt = 1;
-            }
-            else if(arr[i-1]>0 && arr[i]>0){
+        for(int i=1; i<arr.length; i++){
+            if(arr[i-1]>0 && arr[i]>0){
                 cnt += 1;
             }
             else if(arr[i-1]<0 && arr[i]<0){
