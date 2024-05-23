@@ -49,6 +49,6 @@ public class Main {
     }
 
     public static boolean isRange(int x, int y){
-        return (x>=1 && x<N && y>=1 && y<N);
+        return (x>=1 && x<=N && y>=1 && y<=N);
     }
 }
