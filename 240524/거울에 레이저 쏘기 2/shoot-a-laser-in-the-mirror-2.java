@@ -6,9 +6,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         String[][] map = new String[N][N];
+        
+        // "/" 서(0), 북(1), 동(2), 남(3)
+        int[][] deltaOne = {{0,-1},{-1,0},{0,1},{1,0}};
 
-        // 서(0), 남(1), 북(2), 동(3)
-        int[][] delta = {{0,-1},{1,0},{-1,0},{0,1}};
+        // "\" 서(0), 남(1), 동(2), 북(3)
+        int[][] deltaTwo = {{0,-1},{1,0},{0,1},{-1,0}};
 
         for(int i=0; i<map.length; i++){
             String s = sc.next();
@@ -25,17 +28,51 @@ public class Main {
         dir = changeDirection(dir, map[r][c]);
         
         // 레이저 발사 위치별 반사 유형
-        // 1).서<->북 2).동<->남
+        // (1). "/"
+        // 1).서->북 2).북->동 3).동->남 4).남->서
+
+        // (2). "\"
+        // 1).서->남 2).남->동 3).동->북 4).북->서
         int cnt = 0;
+        String output = "";
         while(isRange(r,c)){
+            // System.out.println(r + "," + c + " 들어오는 방향 : " + dir);
             cnt += 1;
 
-            dir = (dir + 2) % 4;
-            int dr = r + delta[dir][0];
-            int dc = c + delta[dir][1];
+            // 최초 진입은 레이저의 방향을 결정할 때 출력 거울의 방향을 고려하지않는다.
+            if(cnt != 1){
+                String input = map[r][c];
+                if(!output.equals(input)){
+                    dir = changeLaser(dir, output);
+                }
+            }
+
+            if(map[r][c].equals("/")){
+                dir = (dir + 1) % 4;
+                int dr = r + deltaOne[dir][0];
+                int dc = c + deltaOne[dir][1];
                 
-            r = dr;
-            c = dc;
+                r = dr;
+                c = dc;
+                output = "/";
+            }
+            else if(map[r][c].equals("\\")){
+                dir = (dir + 1) % 4;
+
+                int dr = r + deltaTwo[dir][0];
+                int dc = c + deltaTwo[dir][1];
+                
+                r = dr;
+                c = dc;
+                output = "\\";
+            }
+
+            // 레이저가 반사되어 나가는 방향이 서쪽, 동쪽일때
+            // 들어오는 방향은 반대이므로 반전시켜줘야한다.
+            if(dir%2 == 0){
+                dir = (dir + 2) % 4;
+            }
+            // System.out.println(" 나가는 방향 : " + dir);
         }
         
         System.out.println(cnt);
@@ -45,21 +82,70 @@ public class Main {
         return (r>=0 && r<N && c>=0 && c<N);
     }
 
-    public static int changeDirection(int k, String s){
-        // 남서북동 -> 서남북동
-        if(k == 0){
-            return 1;
+    // 서로 다른 거울에서 나온 방향을 교정해준다. (출력 거울의 방향 -> 입력 거울의 방향)
+    public static int changeLaser(int k, String s){
+        if(s.equals("/")){
+            if(k == 0){
+                return 0;
+            }
+            else if(k == 1){
+                return 3;
+            }
+            else if(k == 2){
+                return 2;
+            }
+            else if(k == 3){
+                return 1;
+            }
         }
-        else if(k == 1){
-            return 0;
+        else if(s.equals("\\")){
+            if(k == 0){
+                return 0;
+            }
+            else if(k == 1){
+                return 3;
+            }
+            else if(k == 2){
+                return 2;
+            }
+            else if(k == 3){
+                return 1;
+            }
         }
-        else if(k == 2){
-            return 2;
-        }
-        else if(k == 3){
-            return 3;
-        }
+        return -1;
+    }
 
+    public static int changeDirection(int k, String s){
+        // 남서북동 -> 서북동남
+        if(s.equals("/")){
+            if(k == 0){
+                return 3;
+            }
+            else if(k == 1){
+                return 0;
+            }
+            else if(k == 2){
+                return 1;
+            }
+            else if(k == 3){
+                return 2;
+            }
+        }
+        // 남서북동 -> 서남동북
+        else if(s.equals("\\")){
+            if(k == 0){
+                return 1;
+            }
+            else if(k == 1){
+                return 0;
+            }
+            else if(k == 2){
+                return 3;
+            }
+            else if(k == 3){
+                return 2;
+            }
+        }
         return -1;
     }
 
