@@ -21,7 +21,7 @@ public class Main {
                 for(int k=i; k<j; k++){
                     sum += arr[k];
                 }
-                int avg = sum/(j-i);
+                double avg = sum/(j-i);
 
                 boolean check = false;
                 for(int k=i; k<j; k++){
