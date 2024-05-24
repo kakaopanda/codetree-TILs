@@ -13,20 +13,19 @@ public class Main {
         int cnt = 0;
         for(int i=0; i<arr.length; i++){
             for(int j=i; j<arr.length; j++){
-                if(j==i){
-                    continue;
-                }
+                System.out.println(i + "," + j);
                 
                 int sum = 0;
-                for(int k=i; k<j; k++){
+                for(int k=i; k<=j; k++){
                     sum += arr[k];
                 }
-                double avg = sum/(j-i);
+                double avg = (double)sum/(j-i+1);
 
                 boolean check = false;
-                for(int k=i; k<j; k++){
+                for(int k=i; k<=j; k++){
                     if(avg == arr[k]){
                         check = true;
+                        break;
                     }
                 }
 
