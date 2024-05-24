@@ -19,7 +19,7 @@ public class Main {
         for(int i=0; i<N*M; i++){
             // System.out.println(r + "," + c);
             if(num > (int)'Z'-'A'){
-                num = 0;
+                num = 1;
             }
 
             if(map[r][c] == 0){
