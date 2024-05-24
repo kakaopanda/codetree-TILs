@@ -18,7 +18,7 @@ public class Main {
 
         for(int i=0; i<N*M; i++){
             // System.out.println(r + "," + c);
-            if(num > (int)'Z'-'A'){
+            if(num > (int)'Z'-'A' + 1){
                 num = 1;
             }
 
