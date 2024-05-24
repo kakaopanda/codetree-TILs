@@ -26,6 +26,11 @@ public class Main {
         int r = loc[0];
         int c = loc[1];
         dir = changeDirection(dir, map[r][c]);
+
+        // 최초 진입시 서쪽, 동쪽으로 진입할 경우 반전시킨다.
+        if(dir%2 == 0){
+            dir = (dir + 2) % 4;
+        }
         
         // 레이저 발사 위치별 반사 유형
         // (1). "/"
