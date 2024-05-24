@@ -7,14 +7,14 @@ public class Main {
         N = sc.nextInt();
         int[][] map = new int[N][N];
 
-        // 동(0), 북(1), 서(2), 남(3)
-        int[][] delta = {{0,1},{-1,0},{0,-1},{1,0}};
+        // 서(0), 북(1), 동(2), 남(3)
+        int[][] delta = {{0,-1},{-1,0},{0,1},{1,0}};
         int dir = 0;
 
-        int r = N/2;
-        int c = N/2;
+        int r = N-1;
+        int c = N-1;
 
-        for(int i=1; i<=N*N; i++){
+        for(int i=N*N; i>=1; i--){
             if(map[r][c] == 0){
                 map[r][c] = i;
 
@@ -27,7 +27,8 @@ public class Main {
                     dc = c + delta[dir][1];
                 }
                 else{
-                    if(map[r][c] != 0){
+                    if(map[dr][dc] != 0){
+                        dir = (dir + 1) % 4;
                         dr = r + delta[dir][0];
                         dc = c + delta[dir][1];
                     }
