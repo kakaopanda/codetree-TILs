@@ -13,15 +13,26 @@ public class Main {
             arr[index] += candy;
         }
 
-        int max = 0;
-        for(int i=k; i<arr.length-k-1; i++){
+        int max = Integer.MIN_VALUE;
+        
+        if(k >= arr.length/2-1){
             int sum = 0;
-            for(int j=i-k; j<=i+k; j++){
-                sum += arr[j];
+            for(int i=0; i<arr.length; i++){
+                sum += arr[i];
             }
             max = Math.max(max, sum);
         }
-
+        else{
+            for(int i=k; i<arr.length-k-1; i++){
+                int sum = 0;
+                for(int j=i-k; j<=i+k; j++){
+                    sum += arr[j];
+                }
+                System.out.println(sum);
+                max = Math.max(max, sum);
+            }
+        }
+        
         System.out.println(max);
     }
 }
