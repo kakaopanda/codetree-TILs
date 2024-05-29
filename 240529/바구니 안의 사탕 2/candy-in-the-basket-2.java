@@ -28,7 +28,6 @@ public class Main {
                 for(int j=i-k; j<=i+k; j++){
                     sum += arr[j];
                 }
-                System.out.println(sum);
                 max = Math.max(max, sum);
             }
         }
