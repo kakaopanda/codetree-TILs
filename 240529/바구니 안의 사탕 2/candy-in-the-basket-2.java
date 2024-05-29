@@ -13,7 +13,7 @@ public class Main {
             arr[index] += candy;
         }
 
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         for(int i=k; i<arr.length-k-1; i++){
             int sum = 0;
             for(int j=i-k; j<=i+k; j++){
