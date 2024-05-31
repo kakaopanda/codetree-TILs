@@ -13,7 +13,7 @@ public class Main {
         }
 
         int min = Integer.MAX_VALUE;
-        for(int i=0; i<arr.length-t; i++){
+        for(int i=0; i<=arr.length-t; i++){
             int sum = 0;
             for(int j=i; j<i+t; j++){
                 if(h >= arr[j]){
