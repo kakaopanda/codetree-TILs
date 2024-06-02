@@ -19,14 +19,14 @@ public class Main {
         for(int i=1; i<=n; i++){
             for(int j=1; j<=n; j++){
                 for(int k=1; k<=n; k++){
-                    if((Math.abs(f[0]-i)<=2 || i>=n+f[0]-2)
-                    && (Math.abs(f[1]-j)<=2 || j>=n+f[1]-2)
-                    && (Math.abs(f[2]-k)<=2 || k>=n+f[2]-2)){
+                    if((Math.abs(f[0]-i)<=2 || i>=f[0]-2+n || i<=f[0]+2-n)
+                    && (Math.abs(f[1]-j)<=2 || j>=f[1]-2+n || j<=f[1]+2-n)
+                    && (Math.abs(f[2]-k)<=2 || k>=f[2]-2+n || k<=f[2]+2-n)){
                         cnt += 1;
                     }
-                    else if((Math.abs(s[0]-i)<=2 || i>=n+s[0]-2)
-                    && (Math.abs(s[1]-j)<=2 || j>=n+s[1]-2)
-                    && (Math.abs(s[2]-k)<=2 || k>=n+s[2]-2)){
+                    else if((Math.abs(s[0]-i)<=2 || i>=s[0]-2+n || i<=s[0]+2-n)
+                    && (Math.abs(s[1]-j)<=2 || j>=s[1]-2+n || j<=s[1]+2-n)
+                    && (Math.abs(s[2]-k)<=2 || k>=s[2]-2+n || k<=s[2]+2-n)){
                         cnt += 1;
                     } 
                 }
